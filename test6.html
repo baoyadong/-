@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src=></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+    	*{margin: 0;padding: 0;}
+    	.v_show {width: 800px;margin: 30px auto;border:1px solid #000;}
+    	.v_caption{background-color: rgba(0,0,0,0.3);height: 50px;line-height: 50px; padding: 0.5em 1em}
+    	.v_caption h2.cartoon,
+    	.v_caption .highlight,.v_caption .change_btn{float: left;margin-right: 0.5em;}
+    	.v_caption .highlight span{width: 5px;height: 5px;border-radius: 50%;display: inline-block;background-color: #fff;overflow: hidden;margin-right: 3px;}
+    	.v_caption .highlight span.current{background-color: #000;}
+    	.v_caption .more{float: right;margin-right: 0.5em;}
+    	.v_caption .more a{text-decoration: none;font-weight: bold;color: #000;}
+    	.v_caption .more a:hover{text-decoration: underline;color: red;}
+    	.v_content{position: relative;width: 800px;overflow: hidden;height: 170px;}
+    	.v_content_list{width: 3200px;position: absolute;left: 0;top:0;padding: 1em 1em;}
+    	.v_content ul{list-style-type: none;}
+    	.v_content ul li{float: left;margin-right: 3.6em;text-align: center}
+    	.v_content ul li a{text-decoration: none;color: #000;}
+        
+
+
+    </style>
+     <script>
+      ;$(function(){
+      	var page = 1;
+      	var i =4;  //每版四个图片
+      	$("span.next").click(function(){//绑定click事件
+      		var $parent = $(this).parents("div.v_show");//获取父元素；
+      		var $v_show =$parent.find("div.v_content_list");//找到视频内容展示区域；
+      		var $v_content =$parent.find("div.v_content");//找到视频内容展示区域外围div区域
+      		var v_width = $v_content.width();//获取视频外围div区域的宽度；
+      		var len = $v_show.find("li").length;//总的视频图片数；
+      		var page_count =Math.ceil(len/i);//只要不是整数，就往大的取
+      		if (!$v_show.is(":animated")) {//判断视频内容展示区域是否处于动画
+      		if (page == page_count) {$v_show.animate({left:"0px"},"slow");page =1;//已经到最后一个版面，在往后，就跳转到第一页；
+      	}else{
+      			$v_show.animate({left:'-=' + v_width},"slow");page++;//改变left的值，达到每次换一个版面；
+      		}
+      		$parent.find("span").eq(page-1).addClass("current").siblings().removeClass("current")
+      		}
+      	
+      	});
+      		$("span.prev").click(function(){
+      		var $parent = $(this).parents("div.v_show");
+      		var $v_show =$parent.find("div.v_content_list");
+      		var $v_content =$parent.find("div.v_content");
+      		var v_width = $v_content.width();
+      		var len = $v_show.find("li").length;
+      		var page_count =Math.ceil(len/i);
+      		if (!$v_show.is(":animated")) {
+      		if (page == 1) {$v_show.animate({left:'-=' + v_width*(page_count-1)},"slow");page =page_count;}else{
+      			$v_show.animate({left:'+=' + v_width},"slow");page--;
+      		}
+      		$parent.find("span").eq(page-1).addClass("current").siblings().removeClass("current")
+      		}
+      	
+      	})
+      })
+     </script>
+</head>
+<body>
+	<div class="v_show">
+		<div class="v_caption">
+			<h2 class="cartoon">卡通动漫</h2>
+			<div class="highlight">
+				<span class="current">1</span><span>2</span><span>3</span><span>4</span>
+			</div>
+			<div class="change_btn">
+				<span class="prev"><button>上页</button></span>
+				<span class="next"><button>下页</button></span>
+			</div>
+			<div class="more">
+				<a href="#">更多&gt;&gt;</a>
+			</div>
+		</div>
+		<div class="v_content">
+			<div class="v_content_list">
+				<ul>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+					<li><a href="#"><img src="1.jpg" alt="dog"></a><h4><a href="#">小狗</a></h4><span>播放：<em>28276</em></span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
